@@ -3,7 +3,7 @@
 .data 
  a db 'Enter 1st value : $'
  b db 'Enter 2nd value : $' 
- sum db 'Sum of two numbers is = $'
+ sum db 'Sum is = $'
 .code
  main proc
     mov ax,@data  
@@ -39,11 +39,14 @@
     mov dl, 0Dh
     int 21h
     
+    
+    
+    add bh,ch
+    sub bh,48 
+    
     lea ax,sum
     mov ah,9
     int 21h 
-    
-    add bh,ch
     
     mov ah,2
     mov dl,bh

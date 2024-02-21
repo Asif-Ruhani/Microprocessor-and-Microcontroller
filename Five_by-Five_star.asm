@@ -2,26 +2,26 @@
 .stack 100h
 .data
 .code
-
 main proc
     
-    mov bh,5 ; n=5
-    mov bl,0 ; i=0
+    mov bh,5
+    mov bl,0
 outer:
-    inc bl   ; i++
-    cmp bl,bh; if i>n then jump endd
-    jg endd    
-    mov ch,0 ; j=0 
+    inc bl
     
-inner:
+    cmp bl,bh
+    jg endd
+        
+    mov ch,0
+inner:    
     mov ah,2
     mov dl, '*'
     int 21h
     
-    inc ch   ;j++
+    inc ch
     
-    cmp ch,bl; if j<i then jump inner
-    jl inner
+    cmp ch,bh
+    jle inner
     
     mov ah,2
     mov dl,10
@@ -30,7 +30,8 @@ inner:
     int 21h
     
     jmp outer
+    NN
+endd:
     
-  endd:  
     main endp
 end main
